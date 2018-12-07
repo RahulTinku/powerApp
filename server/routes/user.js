@@ -29,6 +29,16 @@ router.get('/user/login', function(req, res) {
 	});
 });
 
+router.post('/user/create', function(req, res) {
+	var db = req.app.get('powersupport');
+	var user = req.body;
+
+	db.users.save(user, function(err, user) {
+		if(err) res.send(err);
+		else res.send(user);
+	});
+});
+
 // // //save Users
 // router.post('/todos', function(req, res) {
 // 	var db = req.app.get('todo');
